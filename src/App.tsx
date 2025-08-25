@@ -87,7 +87,7 @@ export default function App() {
       </div>
 
       {showPaymentUI && (
-        <div className="fixed top-0 left-0 w-screen h-screen bg-[#ffe0ae] text-[#613129] px-4">
+        <div className="fixed top-0 left-0 w-screen h-screen flex flex-col bg-[#ffe0ae] text-[#613129] px-4">
           <span
             onClick={() => {
               setShowPaymentUI(false);
@@ -96,30 +96,34 @@ export default function App() {
           >
             &#10005;
           </span>
-          <h1 className="font-bold text-5xl mx-auto w-fit mt-2">{payeename}</h1>
-          <p className="mt-5 mb-3">Kindly make a payment here....</p>
-          <div className="w-fit mx-auto flex flex-col items-center gap-2">
-            {imageLoading && (
-              <span className="w-[250px] h-[250px] flex justify-center items-center absolute">
-                <div className="loader"></div>
-              </span>
-            )}
-            {imageLink && (
-              <img
-                onLoad={() => {
-                  setImageLoading(false);
-                }}
-                width={250}
-                height={250}
-                className=""
-                src={imageLink}
-                alt="payment qr code"
-              />
-            )}
-            <p className="">
-              <span className="font-semibold text-3xl">₹ {amount}</span> is
-              requested from you
-            </p>
+          <h1 className="font-bold text-5xl mx-auto w-fit mt-10">
+            {payeename}
+          </h1>
+          <div className="grow-1 flex flex-col justify-center">
+            <p className="mt-5 mb-3">Kindly make a payment here....</p>
+            <div className="w-fit mx-auto flex flex-col items-center gap-2">
+              {imageLoading && (
+                <span className="w-[250px] h-[250px] flex justify-center items-center absolute">
+                  <div className="loader"></div>
+                </span>
+              )}
+              {imageLink && (
+                <img
+                  onLoad={() => {
+                    setImageLoading(false);
+                  }}
+                  width={250}
+                  height={250}
+                  className=""
+                  src={imageLink}
+                  alt="payment qr code"
+                />
+              )}
+              <p className="">
+                <span className="font-semibold text-3xl">₹ {amount}</span> is
+                requested from you
+              </p>
+            </div>
           </div>
         </div>
       )}
